@@ -9,7 +9,7 @@ NODE_VERSION="12"
 info "KONFIGURACJA" "Używam Node.js w wersji $NODE_VERSION"
 
 info "KONTENER" "Tworzę i uruchamiam kontener Docker z Node.js $NODE_VERSION"
-CONTAINER_ID=$(docker run -d -p 8080:8080 --name zadanie01-http-container -it node:$NODE_VERSION-alpine sh -c "while true; do sleep 3600; done")
+CONTAINER_ID=$(docker run -d -p 8080:8080 --name zadanie01-http-container -it node:$NODE_VERSION-alpine tail -f /dev/null)
 
 echo "Utworzono kontener o ID: $CONTAINER_ID"
 
@@ -21,10 +21,10 @@ docker cp package.json $CONTAINER_ID:/app/
 docker cp http.js $CONTAINER_ID:/app/
 
 info "ZALEŻNOŚCI" "Instalacja zależności Node.js wewnątrz kontenera"
-docker exec --workdir /app $CONTAINER_ID npm install
+docker exec -d -w /app $CONTAINER_ID npm install
 
 info "URUCHOMIENIE" "Uruchamianie aplikacji Node.js w kontenerze"
-docker exec --workdir /app $CONTAINER_ID node http.js
+docker exec -d -w /app $CONTAINER_ID node http.js
 
 info "SPRZĄTANIE" "Aby zatrzymać i usunąć kontener, wykonaj:"
 echo "docker stop $CONTAINER_ID"
