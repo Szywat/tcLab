@@ -1,0 +1,1 @@
+console.log("To jest przykładowa aplikacja. W rzeczywistym zadaniu musisz zaimplementować właściwy kod według wymagań.");
