@@ -78,7 +78,7 @@ CONTAINER_ID=$(docker run -d -p 8080:8080 --name node-demo-container -it node:$N
 * `-d`: Uruchamia kontener w trybie detached (w tle)
 * `-p 8080:8080`: Mapuje port 8080 hosta na port 8080 kontenera
 * `--name node-demo-container`: Nadaje kontenerowi nazwę dla łatwiejszej identyfikacji
-* -`-it`: Zapewnia interaktywny terminal
+* `-it`: Zapewnia interaktywny terminal
 * `node:$NODE_VERSION-alpine`: Określa obraz z żądaną wersją Node.js (lekki obraz alpine)
 * `tail -f /dev/null`: To polecenie utrzymuje kontener działającym - kontener musi mieć uruchomiony proces, inaczej zatrzyma się automatycznie
 
